@@ -7,12 +7,13 @@ public class Factorial extends Thread {
     static MyThread anotherthread;
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        int[] array = new int[]{2, 13, 25, 39, 41, 54};
+        int[] array = new int[]{3, 13, 25, 39, 41, 54};
         anotherthread = new MyThread(array);
         anotherthread.start();
-
+        anotherthread.join();
+        System.out.println(results);
       }
 
     public static BigInteger factorial(int n) {
@@ -35,7 +36,7 @@ public class Factorial extends Thread {
             for (int x = 0; x < array.length; x++) {
                 BigInteger a = factorial(array[x]);
                 results.add(a);
-                System.out.println(results);
+
             }
         }
     }
